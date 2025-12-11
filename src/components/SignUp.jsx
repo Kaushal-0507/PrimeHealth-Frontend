@@ -167,15 +167,16 @@ const SignUp = () => {
   return (
     <div className="min-h-screen bg-linear-to-br from-blue-50 to-gray-50">
       {/* Header */}
-      <nav className="px-6 py-4">
+      <nav className="px-3 lg:px-20 py-4 ">
         <div className="max-w-6xl mx-auto">
-          <div className="flex items-center justify-between">
+          <div className="flex gap-12 items-center justify-between">
             <div
               className="flex items-center gap-2 cursor-pointer"
               onClick={() => navigate("/")}
             >
-              <img src="/fevicon-2.png" className="w-6 h-6 " />
-              <h1 className="text-2xl font-bold text-gray-800">HealthWay</h1>
+              <h1 className="lg:text-3xl text-2xl  font-bold text-gray-800">
+                Prime<span className="text-blue-600">Health</span>
+              </h1>
             </div>
             <div className="text-sm text-gray-600">
               Already have an account?{" "}
@@ -196,7 +197,7 @@ const SignUp = () => {
           <div>
             <div className="mb-8">
               <h1 className="text-3xl font-bold text-gray-900 mb-2">
-                Create Your HealthWay Account
+                Create Your PrimeHealth Account
               </h1>
               <p className="text-gray-600">
                 Join thousands managing their health journey with us

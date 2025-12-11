@@ -12,16 +12,15 @@ import { useNavigate } from "react-router-dom";
 const Home = () => {
   const navigate = useNavigate();
   return (
-    <div className="min-h-screen bg-linear-to-br from-blue-50 to-white">
+    <div className="min-h-screen bg-linear-to-br from-blue-100 to-white">
       {/* Header */}
-      <nav className="px-6 py-4 flex justify-between items-center bg-white shadow-sm">
+      <nav className="px-4 lg:px-20 py-4 flex justify-between items-center bg-white shadow-sm">
         <div className="flex items-center gap-2">
-          <img src="/fevicon-2.png" className="w-6 h-6 " />
           <h1
             onClick={() => navigate("/")}
-            className="text-2xl font-bold text-gray-800"
+            className="lg:text-3xl text-2xl  font-bold text-gray-800"
           >
-            PrimeHealth
+            Prime<span className="text-blue-600">Health</span>
           </h1>
         </div>
         <button
