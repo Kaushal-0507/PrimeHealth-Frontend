@@ -146,7 +146,7 @@ const BookingForm = () => {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white shadow-sm">
-        <div className="max-w-4xl mx-auto px-6 py-4">
+        <div className="max-w-4xl mx-auto lg:px-6 px-3 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <button
@@ -157,10 +157,12 @@ const BookingForm = () => {
               </button>
 
               <div>
-                <h1 className="text-xl font-bold text-gray-900">
+                <h1 className="lg:text-xl text-[16px] font-bold text-gray-900">
                   Book Appointment
                 </h1>
-                <p className="text-sm text-gray-600">City General Hospital</p>
+                <p className="lg:text-sm text-[12px] text-gray-600">
+                  City General Hospital
+                </p>
               </div>
             </div>
             <button
@@ -174,7 +176,7 @@ const BookingForm = () => {
         </div>
       </div>
 
-      <div className="max-w-4xl mx-auto px-6 py-8">
+      <div className="max-w-4xl mx-auto lg:px-6 px-3 py-8">
         {/* Progress Steps */}
         <div className="mb-12">
           <div className="flex justify-between items-center relative">
@@ -196,7 +198,7 @@ const BookingForm = () => {
                   {step > s.number ? <Check size={20} /> : s.number}
                 </div>
                 <span
-                  className={`mt-2 text-sm font-medium ${
+                  className={`mt-2 lg:text-sm text-[12px] font-medium ${
                     step >= s.number ? "text-blue-600" : "text-gray-500"
                   }`}
                 >
@@ -234,12 +236,12 @@ const BookingForm = () => {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Total Paid:</span>
-                  <span className="text-xl font-bold text-green-600">
+                  <span className="lg:text-xl text-[16px] font-bold text-green-600">
                     ₹{calculateTotal()}
                   </span>
                 </div>
               </div>
-              <p className="text-sm text-gray-500 mb-6">
+              <p className="lg:text-sm text-[12px] text-gray-500 mb-6">
                 Redirecting to dashboard in 3 seconds...
               </p>
               <button
@@ -253,18 +255,20 @@ const BookingForm = () => {
         )}
 
         {/* Form Content */}
-        <div className="bg-white rounded-2xl shadow-sm p-8">
+        <div className="bg-white rounded-2xl shadow-sm lg:p-8 p-6">
           {/* Step 1: Personal Details */}
           {step === 1 && (
             <div>
-              <h2 className="text-2xl font-bold mb-2">Personal Information</h2>
-              <p className="text-gray-600 mb-8">
+              <h2 className="lg:text-2xl text-[18px] font-bold mb-2">
+                Personal Information
+              </h2>
+              <p className="text-gray-600 lg:text-[18px] text-[14px] mb-8">
                 Please provide your basic details for registration
               </p>
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="flex items-center gap-2 text-sm font-medium">
+                  <label className="flex items-center gap-2 lg:text-sm text-[12px] font-medium">
                     <User size={16} />
                     Full Name
                   </label>
@@ -279,7 +283,7 @@ const BookingForm = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="flex items-center gap-2 text-sm font-medium">
+                  <label className="flex items-center gap-2 lg:text-sm text-[12px] font-medium">
                     <Phone size={16} />
                     Phone Number
                   </label>
@@ -294,7 +298,7 @@ const BookingForm = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="flex items-center gap-2 text-sm font-medium">
+                  <label className="flex items-center gap-2 lg:text-sm text-[12px] font-medium">
                     <Mail size={16} />
                     Email Address
                   </label>
@@ -309,24 +313,24 @@ const BookingForm = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="flex items-center gap-2 text-sm font-medium">
+                  <label className="flex items-center gap-2 lg:text-sm text-[12px] font-medium">
                     <User size={16} />
                     Age & Gender
                   </label>
-                  <div className="flex gap-3">
+                  <div className="lg:flex flex-col gap-3">
                     <input
                       type="number"
                       name="age"
                       value={formData.age}
                       onChange={handleInputChange}
-                      className="flex-1 p-3 border rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition"
+                      className="lg:flex-1 w-full  p-3 lg:mb-0 mb-3 border rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition"
                       placeholder="Age"
                     />
                     <select
                       name="gender"
                       value={formData.gender}
                       onChange={handleInputChange}
-                      className="flex-1 p-3 border rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition"
+                      className="lg:flex-1 w-full  p-3 border rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition"
                     >
                       <option value="">Select Gender</option>
                       <option value="male">Male</option>
@@ -342,7 +346,7 @@ const BookingForm = () => {
                   <Shield className="text-blue-600" size={20} />
                   <h3 className="font-semibold">Data Privacy</h3>
                 </div>
-                <p className="text-sm text-gray-600">
+                <p className="lg:text-sm text-[12px] text-gray-600">
                   Your personal information is protected with end-to-end
                   encryption. We comply with all healthcare data privacy
                   regulations (HIPAA, GDPR).
@@ -376,10 +380,10 @@ const BookingForm = () => {
                       <div>
                         <h3 className="font-semibold">{test.name}</h3>
                         <div className="flex items-center gap-3 mt-2">
-                          <span className="text-sm bg-gray-100 text-gray-800 px-2 py-1 rounded">
+                          <span className="lg:text-sm text-[12px] bg-gray-100 text-gray-800 px-2 py-1 rounded">
                             {test.category}
                           </span>
-                          <span className="text-sm text-gray-600">
+                          <span className="lg:text-sm text-[12px] text-gray-600">
                             Duration: {test.duration}
                           </span>
                         </div>
@@ -398,7 +402,7 @@ const BookingForm = () => {
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-2xl font-bold">₹{test.price}</span>
-                      <button className="text-blue-600 text-sm font-medium hover:text-blue-700">
+                      <button className="text-blue-600 lg:text-sm text-[12px] font-medium hover:text-blue-700">
                         View Details
                       </button>
                     </div>
@@ -412,7 +416,7 @@ const BookingForm = () => {
                     <span className="text-lg font-semibold">
                       Selected Tests
                     </span>
-                    <span className="ml-3 text-sm text-gray-600">
+                    <span className="ml-3 lg:text-sm text-[12px] text-gray-600">
                       {formData.selectedTests.length} test
                       {formData.selectedTests.length !== 1 ? "s" : ""} selected
                     </span>
@@ -421,7 +425,9 @@ const BookingForm = () => {
                     <div className="text-2xl font-bold text-blue-600">
                       ₹{calculateTotal()}
                     </div>
-                    <div className="text-sm text-gray-600">Total amount</div>
+                    <div className="lg:text-sm text-[12px] text-gray-600">
+                      Total amount
+                    </div>
                   </div>
                 </div>
                 <div className="space-y-2">
@@ -457,7 +463,7 @@ const BookingForm = () => {
 
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
-                  <label className="flex items-center gap-2 text-sm font-medium mb-3">
+                  <label className="flex items-center gap-2 lg:text-sm text-[12px] font-medium mb-3">
                     <Calendar size={16} />
                     Select Date
                   </label>
@@ -471,7 +477,7 @@ const BookingForm = () => {
                   />
 
                   <div className="mt-8">
-                    <label className="flex items-center gap-2 text-sm font-medium mb-3">
+                    <label className="flex items-center gap-2 lg:text-sm text-[12px] font-medium mb-3">
                       <Calendar size={16} />
                       Select Time Slot
                     </label>
@@ -503,7 +509,7 @@ const BookingForm = () => {
                   </div>
 
                   <div className="mt-8">
-                    <label className="flex items-center gap-2 text-sm font-medium mb-3">
+                    <label className="flex items-center gap-2 lg:text-sm text-[12px] font-medium mb-3">
                       <FileText size={16} />
                       Additional Notes (Optional)
                     </label>
@@ -559,12 +565,12 @@ const BookingForm = () => {
                       <Shield className="text-green-600" size={20} />
                       <div>
                         <h4 className="font-semibold">What to bring</h4>
-                        <p className="text-sm text-gray-600">
+                        <p className="lg:text-sm text-[12px] text-gray-600">
                           For a smooth experience
                         </p>
                       </div>
                     </div>
-                    <ul className="space-y-2 text-sm">
+                    <ul className="space-y-2 lg:text-sm text-[12px]">
                       <li className="flex items-center gap-2">
                         <Check size={14} className="text-green-600" />
                         <span>
@@ -594,8 +600,8 @@ const BookingForm = () => {
                 Complete your booking with payment
               </p>
 
-              <div className="grid lg:grid-cols-2 gap-8">
-                <div>
+              <div className="grid lg:grid-cols-1 ">
+                {/* <div>
                   <div className="border rounded-xl p-6 mb-6">
                     <div className="flex items-center gap-3 mb-6">
                       <CreditCard className="text-blue-600" />
@@ -755,7 +761,7 @@ const BookingForm = () => {
                       </p>
                     </div>
                   </div>
-                </div>
+                </div> */}
 
                 <div>
                   <div className="bg-linear-to-b from-blue-50 to-white rounded-xl p-6 border border-blue-100">
@@ -777,7 +783,7 @@ const BookingForm = () => {
                       <div className="pt-4 border-t">
                         <div className="flex justify-between text-lg font-bold">
                           <span>Total Amount</span>
-                          <span className="text-2xl text-blue-600">
+                          <span className="text-2xl text-blue-400">
                             ₹{calculateTotal()}
                           </span>
                         </div>
@@ -785,7 +791,7 @@ const BookingForm = () => {
                     </div>
 
                     <div className="space-y-4">
-                      <div className="flex items-center gap-3 text-sm text-gray-600">
+                      <div className="flex items-center gap-3 lg:text-sm text-[12px] text-gray-600">
                         <Shield size={16} />
                         <span>Protected by PrimeHealth Secure Payment</span>
                       </div>
@@ -793,10 +799,10 @@ const BookingForm = () => {
                       <label className="flex items-start gap-3">
                         <input
                           type="checkbox"
-                          className="mt-1 text-blue-600"
+                          className="mt-1 text-blue-400"
                           required
                         />
-                        <span className="text-sm text-gray-600">
+                        <span className="lg:text-sm text-[12px] text-gray-600">
                           I agree to the terms and conditions, and authorize
                           PrimeHealth to process this payment.
                         </span>
@@ -810,7 +816,7 @@ const BookingForm = () => {
                     className={`w-full mt-6 py-4 rounded-xl font-bold text-lg transition ${
                       isProcessing
                         ? "bg-blue-400 cursor-not-allowed"
-                        : "bg-blue-600 hover:bg-blue-700"
+                        : "bg-blue-400 hover:bg-blue-500"
                     }`}
                   >
                     {isProcessing ? (
@@ -826,7 +832,7 @@ const BookingForm = () => {
                     )}
                   </button>
 
-                  <p className="text-center text-sm text-gray-600 mt-4">
+                  <p className="text-center lg:text-sm text-[12px] text-gray-600 mt-4">
                     You'll receive an email confirmation and SMS after
                     successful payment
                   </p>
@@ -857,7 +863,7 @@ const BookingForm = () => {
                   handlePayment();
                 }
               }}
-              className={`px-8 py-3 rounded-lg font-medium transition ${
+              className={`lg:px-8 px-4 lg:py-3 py-1.5 rounded-lg font-medium transition ${
                 step === 4
                   ? isProcessing
                     ? "bg-blue-400"

@@ -22,7 +22,7 @@ const QRScanner = () => {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-b from-blue-900 to-blue-700">
+    <div className="min-h-screen bg-linear-to-b from-blue-900 to-blue-300">
       {/* Header */}
       <div className="px-6 py-4">
         <button
@@ -68,9 +68,9 @@ const QRScanner = () => {
                 <p className="text-blue-200 text-sm mt-1">Redirecting...</p>
               </div>
             ) : (
-              <div className="h-full flex flex-col items-center justify-center">
+              <div className="h-full  flex flex-col items-center justify-center">
                 <div className="relative mb-8">
-                  <div className="w-64 h-64 border-2 border-white/30 rounded-lg relative">
+                  <div className="w-64 h-64  border-2 border-white/30 rounded-lg relative">
                     {/* Scanner corners */}
                     <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-blue-400 rounded-tl"></div>
                     <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-blue-400 rounded-tr"></div>
@@ -127,7 +127,7 @@ const QRScanner = () => {
           {!isScanning && !scanComplete && (
             <button
               onClick={handleScan}
-              className="w-full mt-8 py-4 bg-white text-blue-900 rounded-xl font-bold text-lg hover:bg-blue-50 transition flex items-center justify-center gap-3"
+              className="w-full mt-8 py-4 bg-white/30 text-blue-900 rounded-xl font-bold text-lg hover:bg-blue-50 transition flex items-center justify-center gap-3"
             >
               <Camera size={24} />
               Scan QR Code
@@ -135,7 +135,7 @@ const QRScanner = () => {
           )}
 
           {/* Instructions */}
-          <div className="mt-8 bg-white/10 rounded-xl p-6">
+          <div className="mt-8 lg:hidden bg-white/10 rounded-xl p-6">
             <h3 className="text-white font-semibold mb-3">How to scan:</h3>
             <ul className="space-y-2">
               <li className="flex items-start gap-3 text-blue-200">
