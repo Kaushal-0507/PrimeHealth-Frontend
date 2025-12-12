@@ -69,9 +69,9 @@ const Login = () => {
     setTimeout(() => {
       setIsLoading(false);
       // For demo, always succeed
-      localStorage.setItem("healthway_token", "demo_token");
+      localStorage.setItem("PrimeHealth_token", "demo_token");
       localStorage.setItem(
-        "healthway_user",
+        "PrimeHealth_user",
         JSON.stringify({
           name: "John Doe",
           email: formData.email,
@@ -83,12 +83,12 @@ const Login = () => {
 
   const handleGuestLogin = () => {
     // For hackathon demo - quick login
-    localStorage.setItem("healthway_token", "demo_token");
+    localStorage.setItem("PrimeHealth_token", "demo_token");
     localStorage.setItem(
-      "healthway_user",
+      "PrimeHealth_user",
       JSON.stringify({
         name: "Guest User",
-        email: "guest@healthway.com",
+        email: "guest@PrimeHealth.com",
       })
     );
     navigate("/scan");
@@ -124,7 +124,7 @@ const Login = () => {
                   Welcome Back
                 </h2>
                 <p className="text-gray-600 mt-2">
-                  Sign in to your HealthWay account
+                  Sign in to your PrimeHealth account
                 </p>
               </div>
 

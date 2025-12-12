@@ -156,8 +156,8 @@ const SignUp = () => {
         gender: formData.gender,
       };
 
-      localStorage.setItem("healthway_token", "demo_token");
-      localStorage.setItem("healthway_user", JSON.stringify(userData));
+      localStorage.setItem("PrimeHealth_token", "demo_token");
+      localStorage.setItem("PrimeHealth_user", JSON.stringify(userData));
 
       // Navigate to OTP verification
       navigate("/verify-otp");
@@ -553,9 +553,11 @@ const SignUp = () => {
 
           {/* Right Column - Benefits */}
           <div className="lg:block hidden">
-            <div className="bg-linear-to-b from-blue-600 to-blue-700 rounded-2xl p-8 text-white h-full">
+            <div className="bg-linear-to-b from-blue-900 to-blue-400 rounded-2xl p-8 text-white h-full">
               <div className="mb-8">
-                <h2 className="text-2xl font-bold mb-4">Why Join HealthWay?</h2>
+                <h2 className="text-2xl font-bold mb-4">
+                  Why Join PrimeHealth?
+                </h2>
                 <p className="text-blue-100">
                   Experience healthcare made simple and secure
                 </p>
@@ -634,7 +636,7 @@ const SignUp = () => {
               {/* Testimonial */}
               <div className="mt-12 p-6 bg-white/10 rounded-xl">
                 <p className="italic mb-4">
-                  "HealthWay transformed how I manage my family's healthcare.
+                  "PrimeHealth transformed how I manage my family's healthcare.
                   From scanning QR codes at hospitals to digital reports,
                   everything is so seamless!"
                 </p>
