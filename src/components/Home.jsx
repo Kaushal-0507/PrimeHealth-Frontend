@@ -20,15 +20,23 @@ const Home = () => {
             onClick={() => navigate("/")}
             className="lg:text-3xl text-2xl  font-bold text-gray-800"
           >
-            Prime<span className="text-blue-600">Health</span>
+            Prime<span className="text-blue-900">Health</span>
           </h1>
         </div>
-        <button
-          onClick={() => navigate("/login")}
-          className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-        >
-          Try Demo
-        </button>
+        <div className="flex gap-3">
+          <button
+            onClick={() => navigate("/login")}
+            className="px-4 py-2 text-blue-900  hover:text-blue-700 transition"
+          >
+            Login
+          </button>
+          <button
+            onClick={() => navigate("/signup")}
+            className="px-4 py-2   bg-blue-900 text-white rounded-lg hover:bg-blue-800 transition"
+          >
+            SignUp
+          </button>
+        </div>
       </nav>
 
       {/* Hero Section */}
@@ -37,7 +45,7 @@ const Home = () => {
           <div>
             <h1 className="text-5xl font-bold text-gray-900 mb-4">
               Your Complete
-              <span className="text-blue-600"> Hospital Journey</span>,
+              <span className="text-blue-900"> Hospital Journey</span>,
               Simplified
             </h1>
             <p className="text-xl text-gray-600 mb-8">
@@ -47,7 +55,7 @@ const Home = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
               <div className="flex items-center gap-3 p-4 bg-white rounded-xl shadow-sm">
-                <QrCode className="text-blue-600" size={24} />
+                <QrCode className="text-blue-900" size={24} />
                 <div>
                   <h3 className="font-semibold">Scan QR Code</h3>
                   <p className="text-sm text-gray-500">At hospital entrance</p>
@@ -68,7 +76,7 @@ const Home = () => {
             <div className="space-y-6">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                  <QrCode className="text-blue-600" size={20} />
+                  <QrCode className="text-blue-900" size={20} />
                 </div>
                 <div>
                   <h3 className="font-semibold">Scan Hospital QR</h3>
@@ -92,7 +100,7 @@ const Home = () => {
 
               <button
                 onClick={() => navigate("/scan")}
-                className="w-full py-4 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition flex items-center justify-center gap-2"
+                className="w-full py-4 bg-blue-900 text-white rounded-xl font-semibold hover:bg-blue-800 transition flex items-center justify-center gap-2"
               >
                 Start Demo Journey
                 <ArrowRight size={20} />
@@ -104,7 +112,7 @@ const Home = () => {
             <div className="bg-white rounded-2xl shadow-xl p-8">
               <div className="text-center mb-8">
                 <div className="w-32 h-32 mx-auto bg-linear-to-r from-blue-100 to-blue-50 rounded-2xl flex items-center justify-center">
-                  <QrCode size={64} className="text-blue-600" />
+                  <QrCode size={64} className="text-blue-900" />
                 </div>
                 <h3 className="text-2xl font-bold mt-6 mb-2">Scan to Begin</h3>
                 <p className="text-gray-600">
@@ -115,7 +123,7 @@ const Home = () => {
               <div className="space-y-4">
                 <div className="flex items-center gap-3 p-4 border rounded-lg hover:bg-blue-50 cursor-pointer transition">
                   <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <MapPin className="text-blue-600" size={24} />
+                    <MapPin className="text-blue-900" size={24} />
                   </div>
                   <div className="flex-1">
                     <h4 className="font-semibold">
@@ -153,7 +161,7 @@ const Home = () => {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white p-6 rounded-xl shadow-sm">
               <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
-                <MapPin className="text-blue-600" size={28} />
+                <MapPin className="text-blue-900" size={28} />
               </div>
               <h3 className="text-xl font-semibold mb-3">Smart Navigation</h3>
               <p className="text-gray-600">

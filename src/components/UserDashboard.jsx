@@ -10,6 +10,9 @@ import {
   Eye,
   User,
 } from "lucide-react";
+import axios from "axios";
+import { BASE_URL } from "../utils/constant";
+import { toast } from "react-toastify";
 
 const UserDashboard = () => {
   const navigate = useNavigate();
@@ -72,6 +75,23 @@ const UserDashboard = () => {
     },
   ];
 
+  const handleLogout = async () => {
+    try {
+      const response = await axios.post(
+        BASE_URL + "/logout",
+        {},
+        { withCredentials: true }
+      );
+      toast(response, { type: "success" });
+      setTimeout(() => {
+        navigate("/home");
+      }, 200);
+    } catch (error) {
+      toast(error.message, { type: "error" });
+      console.log("ERROR: " + error);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -83,11 +103,14 @@ const UserDashboard = () => {
                 onClick={() => navigate("/")}
                 className="text-[16px] lg:text-[28px] font-bold text-gray-900"
               >
-                My Prime<span className="text-blue-600">Health</span>
+                My Prime<span className="text-blue-900">Health</span>
               </h1>
             </div>
-            <button className="px-2 lg:px-4 lg:py-2 py-1 text-[12px] lg:text-[18px] text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-50 transition">
-              Scan New QR
+            <button
+              onClick={handleLogout}
+              className="px-2 lg:px-4 lg:py-2 py-1 text-[12px] lg:text-[18px] text-blue-900 border border-blue-600 rounded-lg hover:bg-blue-50 transition"
+            >
+              Logout
             </button>
           </div>
         </div>
@@ -95,7 +118,7 @@ const UserDashboard = () => {
 
       <div className="max-w-6xl mx-auto px-6 py-8">
         {/* Welcome Section */}
-        <div className="bg-linear-to-r from-blue-700 to-blue-400 rounded-2xl p-8 text-white mb-8">
+        <div className="bg-linear-to-r from-blue-900 to-blue-600 rounded-2xl p-8 text-white mb-8">
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-3xl font-bold mb-2">Welcome back, John!</h1>
@@ -129,7 +152,7 @@ const UserDashboard = () => {
           <button
             className={`flex-1 py-3 px-4 rounded-lg font-medium transition ${
               activeTab === "appointments"
-                ? "bg-blue-600 text-white"
+                ? "bg-blue-900 text-white"
                 : "text-gray-600 hover:bg-gray-100"
             }`}
             onClick={() => setActiveTab("appointments")}
@@ -142,7 +165,7 @@ const UserDashboard = () => {
           <button
             className={`flex-1 py-3 px-4 rounded-lg font-medium transition ${
               activeTab === "reports"
-                ? "bg-blue-600 text-white"
+                ? "bg-blue-900 text-white"
                 : "text-gray-600 hover:bg-gray-100"
             }`}
             onClick={() => setActiveTab("reports")}
@@ -161,7 +184,7 @@ const UserDashboard = () => {
               <h2 className="text-2xl font-bold">My Appointments</h2>
               <button
                 onClick={() => navigate("/scan")}
-                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                className="px-4 py-2 bg-blue-900 text-white rounded-lg hover:bg-blue-800 transition"
               >
                 Book New
               </button>
@@ -181,7 +204,7 @@ const UserDashboard = () => {
                       {apt.status === "completed" ? (
                         <CheckCircle className="text-green-600" size={24} />
                       ) : (
-                        <Clock className="text-blue-600" size={24} />
+                        <Clock className="text-blue-900" size={24} />
                       )}
                     </div>
                     <div>
@@ -216,13 +239,13 @@ const UserDashboard = () => {
                   </div>
 
                   <div className="flex gap-3">
-                    <button className="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">
+                    <button className="px-4 py-2 border border-blue-600 text-blue-900 rounded-lg hover:bg-blue-50 transition">
                       Reschedule
                     </button>
                     {apt.status === "completed" && (
                       <button
                         onClick={() => navigate("/reports/1")}
-                        className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                        className="px-4 py-2 bg-blue-900 text-white rounded-lg hover:bg-blue-800 transition"
                       >
                         View Report
                       </button>
@@ -239,7 +262,7 @@ const UserDashboard = () => {
           <div className="space-y-6">
             <div className="flex justify-between items-center">
               <h2 className="text-2xl font-bold">Medical Reports</h2>
-              <button className="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">
+              <button className="px-4 py-2 border border-blue-600 text-blue-900 rounded-lg hover:bg-blue-50 transition">
                 Upload Report
               </button>
             </div>
@@ -252,7 +275,7 @@ const UserDashboard = () => {
                 >
                   <div className="flex items-start justify-between mb-4">
                     <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                      <FileText className="text-blue-600" size={24} />
+                      <FileText className="text-blue-900" size={24} />
                     </div>
                     {report.hasAiAnalysis && (
                       <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">
@@ -276,12 +299,12 @@ const UserDashboard = () => {
                   <div className="flex gap-3">
                     <button
                       onClick={() => navigate(`/reports/${report.id}`)}
-                      className="flex-1 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition flex items-center justify-center gap-2"
+                      className="flex-1 py-2 bg-blue-900 text-white rounded-lg hover:bg-blue-800 transition flex items-center justify-center gap-2"
                     >
                       <Eye size={16} />
                       View
                     </button>
-                    <button className="flex-1 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition flex items-center justify-center gap-2">
+                    <button className="flex-1 py-2 border border-blue-600 text-blue-900 rounded-lg hover:bg-blue-50 transition flex items-center justify-center gap-2">
                       <Download size={16} />
                       Download
                     </button>

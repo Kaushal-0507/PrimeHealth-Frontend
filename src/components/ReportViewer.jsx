@@ -77,19 +77,19 @@ const ReportViewer = () => {
           <div className="flex items-center justify-between">
             <button
               onClick={() => navigate("/dashboard")}
-              className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition"
+              className="flex items-center gap-2 text-gray-600 hover:text-blue-900 transition"
             >
               <ArrowLeft size={20} />
               Back to Dashboard
             </button>
             <div className="flex items-center gap-4">
-              <button className="flex items-center gap-2 px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">
+              <button className="flex items-center gap-2 px-4 py-2 border border-blue-600 text-blue-900 rounded-lg hover:bg-blue-50 transition">
                 <Download size={16} />
                 Download PDF
               </button>
               <button
                 onClick={() => setShowAiAnalysis(!showAiAnalysis)}
-                className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                className="flex items-center gap-2 px-4 py-2 bg-blue-900 text-white rounded-lg hover:bg-blue-800 transition"
               >
                 <Sparkles size={16} />
                 {showAiAnalysis ? "Hide AI Analysis" : "Show AI Analysis"}
@@ -133,7 +133,7 @@ const ReportViewer = () => {
               <div className="mb-8 p-6 bg-blue-50 rounded-xl">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center">
-                    <Activity className="text-blue-600" size={24} />
+                    <Activity className="text-blue-900" size={24} />
                   </div>
                   <div>
                     <h3 className="font-bold text-lg">Test Results Summary</h3>
@@ -346,7 +346,7 @@ const ReportViewer = () => {
                         (rec, index) => (
                           <li key={index} className="flex items-start gap-2">
                             <div className="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center mt-0.5">
-                              <span className="text-blue-600 text-xs">✓</span>
+                              <span className="text-blue-900 text-xs">✓</span>
                             </div>
                             <span>{rec}</span>
                           </li>
@@ -362,7 +362,7 @@ const ReportViewer = () => {
                     <p className="font-medium">
                       {reportData.aiAnalysis.nextSteps}
                     </p>
-                    <button className="w-full mt-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                    <button className="w-full mt-4 py-3 bg-blue-900 text-white rounded-lg hover:bg-blue-800 transition">
                       Schedule Follow-up
                     </button>
                   </div>

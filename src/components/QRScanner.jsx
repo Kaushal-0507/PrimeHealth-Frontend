@@ -127,7 +127,7 @@ const QRScanner = () => {
           {!isScanning && !scanComplete && (
             <button
               onClick={handleScan}
-              className="w-full mt-8 py-4 bg-white/30 text-blue-900 rounded-xl font-bold text-lg hover:bg-blue-50 transition flex items-center justify-center gap-3"
+              className="w-full mt-8 py-4 bg-white/30 text-white rounded-xl font-bold text-lg hover:bg-blue-50 transition flex items-center justify-center gap-3"
             >
               <Camera size={24} />
               Scan QR Code

@@ -99,7 +99,7 @@ const HospitalPortal = () => {
             </div>
             <button
               onClick={() => navigate(`/hospital/${hospitalId}/book`)}
-              className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+              className="px-4 py-2 bg-blue-900 text-white rounded-lg hover:bg-blue-800 transition"
             >
               Book Appointment
             </button>
@@ -113,7 +113,7 @@ const HospitalPortal = () => {
           <button
             className={`flex-1 py-3 px-4 rounded-lg font-medium transition ${
               activeTab === "navigation"
-                ? "bg-blue-600 text-white"
+                ? "bg-blue-900 text-white"
                 : "text-gray-600 hover:bg-gray-100"
             }`}
             onClick={() => setActiveTab("navigation")}
@@ -126,7 +126,7 @@ const HospitalPortal = () => {
           <button
             className={`flex-1 py-3 px-4 rounded-lg font-medium transition ${
               activeTab === "prices"
-                ? "bg-blue-600 text-white"
+                ? "bg-blue-900 text-white"
                 : "text-gray-600 hover:bg-gray-100"
             }`}
             onClick={() => setActiveTab("prices")}
@@ -139,7 +139,7 @@ const HospitalPortal = () => {
           <button
             className={`flex-1 py-3 px-4 rounded-lg font-medium transition ${
               activeTab === "reviews"
-                ? "bg-blue-600 text-white"
+                ? "bg-blue-900 text-white"
                 : "text-gray-600 hover:bg-gray-100"
             }`}
             onClick={() => setActiveTab("reviews")}
@@ -161,7 +161,7 @@ const HospitalPortal = () => {
                   {/* Simplified Hospital Map */}
                   <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-white border-2 border-blue-500 rounded-lg p-4">
                     <div className="text-center">
-                      <MapPin className="mx-auto mb-2 text-blue-600" />
+                      <MapPin className="mx-auto mb-2 text-blue-900" />
                       <span className="font-semibold">You are here</span>
                     </div>
                   </div>
@@ -207,13 +207,13 @@ const HospitalPortal = () => {
                   </h3>
                   <div className="space-y-3">
                     <div className="flex items-center gap-3 p-3 bg-blue-50 rounded-lg">
-                      <Navigation className="text-blue-600" />
+                      <Navigation className="text-blue-900" />
                       <span>
                         Walk straight for 50 meters from current location
                       </span>
                     </div>
                     <div className="flex items-center gap-3 p-3 bg-blue-50 rounded-lg">
-                      <Navigation className="text-blue-600" />
+                      <Navigation className="text-blue-900" />
                       <span>
                         Take elevator to Floor{" "}
                         {
@@ -223,7 +223,7 @@ const HospitalPortal = () => {
                       </span>
                     </div>
                     <div className="flex items-center gap-3 p-3 bg-blue-50 rounded-lg">
-                      <Navigation className="text-blue-600" />
+                      <Navigation className="text-blue-900" />
                       <span>
                         Turn left after reception, department will be on your
                         right
@@ -273,7 +273,7 @@ const HospitalPortal = () => {
                           {dept.waitTime}
                         </span>
                       </div>
-                      <button className="mt-3 w-full py-2 text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-50 transition">
+                      <button className="mt-3 w-full py-2 text-blue-900 border border-blue-600 rounded-lg hover:bg-blue-50 transition">
                         Get Directions
                       </button>
                     </div>
@@ -293,7 +293,7 @@ const HospitalPortal = () => {
                 <div key={dept.id} className="border rounded-xl p-5">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                      <DollarSign className="text-blue-600" />
+                      <DollarSign className="text-blue-900" />
                     </div>
                     <div>
                       <h3 className="font-bold text-lg">{dept.name}</h3>
@@ -315,7 +315,7 @@ const HospitalPortal = () => {
                     ))}
                   </div>
 
-                  <button className="mt-4 w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                  <button className="mt-4 w-full py-2 bg-blue-900 text-white rounded-lg hover:bg-blue-800 transition">
                     Book Test
                   </button>
                 </div>

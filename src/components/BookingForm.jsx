@@ -151,7 +151,7 @@ const BookingForm = () => {
             <div className="flex items-center gap-3">
               <button
                 onClick={() => navigate(`/hospital/${hospitalId}`)}
-                className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition"
+                className="flex items-center gap-2 text-gray-600 hover:text-blue-900 transition"
               >
                 <ArrowLeft size={20} />
               </button>
@@ -167,7 +167,7 @@ const BookingForm = () => {
             </div>
             <button
               onClick={() => navigate("/scan")}
-              className="px-4 py-2 text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-50 transition flex items-center gap-2"
+              className="px-4 py-2 text-blue-900 border border-blue-600 rounded-lg hover:bg-blue-50 transition flex items-center gap-2"
             >
               <QrCode size={16} />
               Scan New QR
@@ -182,7 +182,7 @@ const BookingForm = () => {
           <div className="flex justify-between items-center relative">
             <div className="absolute top-1/2 left-0 right-0 h-1 bg-gray-200 -translate-y-1/2 -z-10"></div>
             <div
-              className="absolute top-1/2 left-0 h-1 bg-blue-600 -translate-y-1/2 -z-10 transition-all duration-300"
+              className="absolute top-1/2 left-0 h-1 bg-blue-900 -translate-y-1/2 -z-10 transition-all duration-300"
               style={{ width: `${((step - 1) / 3) * 100}%` }}
             ></div>
 
@@ -191,7 +191,7 @@ const BookingForm = () => {
                 <div
                   className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 ${
                     step >= s.number
-                      ? "bg-blue-600 text-white"
+                      ? "bg-blue-900 text-white"
                       : "bg-white border-2 border-gray-300 text-gray-400"
                   }`}
                 >
@@ -199,7 +199,7 @@ const BookingForm = () => {
                 </div>
                 <span
                   className={`mt-2 lg:text-sm text-[12px] font-medium ${
-                    step >= s.number ? "text-blue-600" : "text-gray-500"
+                    step >= s.number ? "text-blue-900" : "text-gray-500"
                   }`}
                 >
                   {s.title}
@@ -246,7 +246,7 @@ const BookingForm = () => {
               </p>
               <button
                 onClick={() => navigate("/dashboard")}
-                className="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                className="w-full py-3 bg-blue-900 text-white rounded-lg hover:bg-blue-800 transition"
               >
                 Go to Dashboard
               </button>
@@ -343,7 +343,7 @@ const BookingForm = () => {
 
               <div className="mt-8 p-6 bg-blue-50 rounded-xl">
                 <div className="flex items-center gap-3 mb-3">
-                  <Shield className="text-blue-600" size={20} />
+                  <Shield className="text-blue-900" size={20} />
                   <h3 className="font-semibold">Data Privacy</h3>
                 </div>
                 <p className="lg:text-sm text-[12px] text-gray-600">
@@ -391,7 +391,7 @@ const BookingForm = () => {
                       <div
                         className={`w-6 h-6 rounded-full border flex items-center justify-center ${
                           formData.selectedTests.includes(test.id)
-                            ? "bg-blue-600 border-blue-600"
+                            ? "bg-blue-900 border-blue-600"
                             : "border-gray-300"
                         }`}
                       >
@@ -402,7 +402,7 @@ const BookingForm = () => {
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-2xl font-bold">₹{test.price}</span>
-                      <button className="text-blue-600 lg:text-sm text-[12px] font-medium hover:text-blue-700">
+                      <button className="text-blue-900 lg:text-sm text-[12px] font-medium hover:text-blue-700">
                         View Details
                       </button>
                     </div>
@@ -422,7 +422,7 @@ const BookingForm = () => {
                     </span>
                   </div>
                   <div className="text-right">
-                    <div className="text-2xl font-bold text-blue-600">
+                    <div className="text-2xl font-bold text-blue-900">
                       ₹{calculateTotal()}
                     </div>
                     <div className="lg:text-sm text-[12px] text-gray-600">
@@ -440,7 +440,7 @@ const BookingForm = () => {
                       >
                         <div className="flex items-center gap-3">
                           <div className="w-8 h-8 bg-blue-100 rounded flex items-center justify-center">
-                            <FileText size={14} className="text-blue-600" />
+                            <FileText size={14} className="text-blue-900" />
                           </div>
                           <span>{test.name}</span>
                         </div>
@@ -498,7 +498,7 @@ const BookingForm = () => {
                           }
                           className={`py-3 border rounded-lg transition ${
                             formData.time === timeSlot
-                              ? "bg-blue-600 text-white border-blue-600"
+                              ? "bg-blue-900 text-white border-blue-600"
                               : "border-gray-300 hover:border-blue-400 hover:bg-blue-50"
                           }`}
                         >
@@ -552,7 +552,7 @@ const BookingForm = () => {
                           <span className="text-lg font-bold">
                             Total Amount
                           </span>
-                          <span className="text-2xl font-bold text-blue-600">
+                          <span className="text-2xl font-bold text-blue-900">
                             ₹{calculateTotal()}
                           </span>
                         </div>
@@ -604,7 +604,7 @@ const BookingForm = () => {
                 {/* <div>
                   <div className="border rounded-xl p-6 mb-6">
                     <div className="flex items-center gap-3 mb-6">
-                      <CreditCard className="text-blue-600" />
+                      <CreditCard className="text-blue-900" />
                       <h3 className="font-bold text-lg">Payment Method</h3>
                     </div>
 
@@ -627,7 +627,7 @@ const BookingForm = () => {
                               paymentMethod: "card",
                             }))
                           }
-                          className="text-blue-600"
+                          className="text-blue-900"
                         />
                         <CreditCard size={20} />
                         <span className="flex-1">Credit/Debit Card</span>
@@ -700,7 +700,7 @@ const BookingForm = () => {
                               paymentMethod: "upi",
                             }))
                           }
-                          className="text-blue-600"
+                          className="text-blue-900"
                         />
                         <div className="w-8 h-8 bg-orange-100 rounded flex items-center justify-center">
                           <span className="font-bold text-orange-600">UPI</span>
@@ -742,7 +742,7 @@ const BookingForm = () => {
                               paymentMethod: "netbanking",
                             }))
                           }
-                          className="text-blue-600"
+                          className="text-blue-900"
                         />
                         <div className="w-8 h-8 bg-green-100 rounded flex items-center justify-center">
                           <span className="font-bold text-green-600">NB</span>
@@ -848,7 +848,7 @@ const BookingForm = () => {
               className={`px-6 py-3 rounded-lg transition ${
                 step === 1
                   ? "text-gray-400 cursor-not-allowed"
-                  : "text-blue-600 hover:bg-blue-50"
+                  : "text-blue-900 hover:bg-blue-50"
               }`}
               disabled={step === 1}
             >
@@ -868,7 +868,7 @@ const BookingForm = () => {
                   ? isProcessing
                     ? "bg-blue-400"
                     : "bg-green-600 hover:bg-green-700"
-                  : "bg-blue-600 hover:bg-blue-700"
+                  : "bg-blue-900 hover:bg-blue-800"
               } text-white flex items-center gap-2`}
               disabled={step === 4 && isProcessing}
             >

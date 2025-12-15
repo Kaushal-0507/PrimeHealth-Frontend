@@ -12,6 +12,14 @@ import {
   CheckCircle,
   AlertCircle,
 } from "lucide-react";
+import {
+  getPasswordStrengthColor,
+  getPasswordStrengthText,
+  validateForm,
+} from "../utils/validateForm";
+import axios from "axios";
+import { BASE_URL } from "../utils/constant";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -58,110 +66,31 @@ const SignUp = () => {
     }
   };
 
-  const validateForm = () => {
-    const newErrors = {};
-
-    if (!formData.firstName.trim())
-      newErrors.firstName = "First name is required";
-    if (!formData.lastName.trim()) newErrors.lastName = "Last name is required";
-
-    if (!formData.email) {
-      newErrors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email";
-    }
-
-    if (!formData.phone) {
-      newErrors.phone = "Phone number is required";
-    } else if (!/^[0-9]{10}$/.test(formData.phone.replace(/\D/g, ""))) {
-      newErrors.phone = "Please enter a valid 10-digit phone number";
-    }
-
-    if (!formData.dob) newErrors.dob = "Date of birth is required";
-
-    if (!formData.gender) newErrors.gender = "Please select gender";
-
-    if (!formData.password) {
-      newErrors.password = "Password is required";
-    } else if (formData.password.length < 8) {
-      newErrors.password = "Password must be at least 8 characters";
-    }
-
-    if (!formData.confirmPassword) {
-      newErrors.confirmPassword = "Please confirm your password";
-    } else if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = "Passwords do not match";
-    }
-
-    if (!formData.acceptTerms) {
-      newErrors.acceptTerms = "You must accept the terms and conditions";
-    }
-
-    return newErrors;
-  };
-
-  const getPasswordStrengthColor = () => {
-    switch (passwordStrength) {
-      case 0:
-      case 1:
-        return "bg-red-500";
-      case 2:
-        return "bg-yellow-500";
-      case 3:
-        return "bg-blue-500";
-      case 4:
-        return "bg-green-500";
-      default:
-        return "bg-gray-300";
-    }
-  };
-
-  const getPasswordStrengthText = () => {
-    switch (passwordStrength) {
-      case 0:
-        return "Very Weak";
-      case 1:
-        return "Weak";
-      case 2:
-        return "Fair";
-      case 3:
-        return "Good";
-      case 4:
-        return "Strong";
-      default:
-        return "";
-    }
-  };
-
   const handleSignUp = async (e) => {
     e.preventDefault();
-    const validationErrors = validateForm();
+    try {
+      const validationErrors = validateForm(formData);
 
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
+      if (Object.keys(validationErrors).length > 0) {
+        setErrors(validationErrors);
+        return;
+      }
+
+      setIsLoading(true);
+      const response = await axios.post(BASE_URL + "/signup", formData, {
+        withCredentials: true,
+      });
+      const SignedUpUser = response?.data?.data;
+      toast("SignUp Successfully!!!", { type: "success" });
+      setTimeout(() => {
+        if (SignedUpUser) {
+          navigate("/dashboard");
+        }
+      }, 500);
+    } catch (error) {
+      toast(error.message, { type: "error" });
+      console.log("ERROR: " + error);
     }
-
-    setIsLoading(true);
-
-    // Simulate API call
-    setTimeout(() => {
-      setIsLoading(false);
-      // Create user profile
-      const userData = {
-        name: `${formData.firstName} ${formData.lastName}`,
-        email: formData.email,
-        phone: formData.phone,
-        dob: formData.dob,
-        gender: formData.gender,
-      };
-
-      localStorage.setItem("PrimeHealth_token", "demo_token");
-      localStorage.setItem("PrimeHealth_user", JSON.stringify(userData));
-
-      // Navigate to OTP verification
-      navigate("/verify-otp");
-    }, 1500);
   };
 
   return (
@@ -175,14 +104,14 @@ const SignUp = () => {
               onClick={() => navigate("/")}
             >
               <h1 className="lg:text-3xl text-2xl  font-bold text-gray-800">
-                Prime<span className="text-blue-600">Health</span>
+                Prime<span className="text-blue-900">Health</span>
               </h1>
             </div>
             <div className="text-sm text-gray-600">
               Already have an account?{" "}
               <Link
                 to="/login"
-                className="text-blue-600 font-semibold hover:text-blue-700"
+                className="text-blue-900 font-semibold hover:text-blue-700"
               >
                 Sign in
               </Link>
@@ -397,16 +326,18 @@ const SignUp = () => {
                             : passwordStrength === 2
                             ? "text-yellow-600"
                             : passwordStrength === 3
-                            ? "text-blue-600"
+                            ? "text-blue-900"
                             : "text-green-600"
                         }`}
                       >
-                        {getPasswordStrengthText()}
+                        {getPasswordStrengthText(passwordStrength)}
                       </span>
                     </div>
                     <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
                       <div
-                        className={`h-full ${getPasswordStrengthColor()} transition-all duration-300`}
+                        className={`h-full ${getPasswordStrengthColor(
+                          passwordStrength
+                        )} transition-all duration-300`}
                         style={{ width: `${passwordStrength * 25}%` }}
                       ></div>
                     </div>
@@ -502,20 +433,20 @@ const SignUp = () => {
                     name="acceptTerms"
                     checked={formData.acceptTerms}
                     onChange={handleInputChange}
-                    className="w-5 h-5 text-blue-600 rounded focus:ring-blue-500 mt-0.5"
+                    className="w-5 h-5 text-blue-900 rounded focus:ring-blue-500 mt-0.5"
                   />
                   <span className="text-sm text-gray-600">
                     I agree to the{" "}
                     <Link
                       to="/terms"
-                      className="text-blue-600 hover:text-blue-700"
+                      className="text-blue-900 hover:text-blue-700"
                     >
                       Terms of Service
                     </Link>{" "}
                     and{" "}
                     <Link
                       to="/privacy"
-                      className="text-blue-600 hover:text-blue-700"
+                      className="text-blue-900 hover:text-blue-700"
                     >
                       Privacy Policy
                     </Link>
@@ -535,7 +466,7 @@ const SignUp = () => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className={`w-full py-4 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition flex items-center justify-center gap-3 ${
+                className={`w-full py-4 bg-blue-900 text-white rounded-xl font-semibold hover:bg-blue-800 transition flex items-center justify-center gap-3 ${
                   isLoading ? "opacity-80 cursor-not-allowed" : ""
                 }`}
               >
@@ -553,7 +484,7 @@ const SignUp = () => {
 
           {/* Right Column - Benefits */}
           <div className="lg:block hidden">
-            <div className="bg-linear-to-b from-blue-900 to-blue-400 rounded-2xl p-8 text-white h-full">
+            <div className="bg-linear-to-b from-blue-400 to-blue-900 rounded-2xl p-8 text-white h-full">
               <div className="mb-8">
                 <h2 className="text-2xl font-bold mb-4">
                   Why Join PrimeHealth?
@@ -641,12 +572,9 @@ const SignUp = () => {
                   everything is so seamless!"
                 </p>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-white/20 rounded-full"></div>
                   <div>
                     <p className="font-semibold">Priya Sharma</p>
-                    <p className="text-sm text-blue-100">
-                      Regular user since 2023
-                    </p>
+                    <p className="text-sm text-blue-100">⭐ ⭐ ⭐ ⭐ ⭐</p>
                   </div>
                 </div>
               </div>

@@ -10,6 +10,9 @@ import {
   Shield,
   AlertCircle,
 } from "lucide-react";
+import { BASE_URL } from "../utils/constant";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -56,41 +59,36 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const validationErrors = validateForm();
+    try {
+      const validationErrors = validateForm();
 
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
+      if (Object.keys(validationErrors).length > 0) {
+        setErrors(validationErrors);
+        return;
+      }
 
-    setIsLoading(true);
+      // setIsLoading(true);
+      const response = await axios.post(BASE_URL + "/login", formData, {
+        withCredentials: true,
+      });
 
-    // Simulate API call
-    setTimeout(() => {
+      const loggedInUser = response?.data?.data;
+      console.log(loggedInUser);
+
+      toast("Login Successfully", { type: "success" });
+      setTimeout(() => {
+        if (loggedInUser) {
+          navigate("/dashboard");
+        }
+      }, 500);
+    } catch (error) {
+      toast("Invalid Credentials!!!", { type: "error" });
       setIsLoading(false);
-      // For demo, always succeed
-      localStorage.setItem("PrimeHealth_token", "demo_token");
-      localStorage.setItem(
-        "PrimeHealth_user",
-        JSON.stringify({
-          name: "John Doe",
-          email: formData.email,
-        })
-      );
-      navigate("/dashboard");
-    }, 1500);
+      console.log("ERROR: " + error);
+    }
   };
 
   const handleGuestLogin = () => {
-    // For hackathon demo - quick login
-    localStorage.setItem("PrimeHealth_token", "demo_token");
-    localStorage.setItem(
-      "PrimeHealth_user",
-      JSON.stringify({
-        name: "Guest User",
-        email: "guest@PrimeHealth.com",
-      })
-    );
     navigate("/scan");
   };
 
@@ -104,7 +102,7 @@ const Login = () => {
             onClick={() => navigate("/")}
           >
             <h1 className="lg:text-3xl text-2xl  font-bold text-gray-800">
-              Prime<span className="text-blue-600">Health</span>
+              Prime<span className="text-blue-900">Health</span>
             </h1>
           </div>
         </div>
@@ -118,7 +116,7 @@ const Login = () => {
               {/* Header */}
               <div className="text-center mb-8">
                 <div className="w-16 h-16 mx-auto bg-blue-100 rounded-full flex items-center justify-center mb-4">
-                  <Shield className="text-blue-600" size={32} />
+                  <Shield className="text-blue-900" size={32} />
                 </div>
                 <h2 className="text-3xl font-bold text-gray-900">
                   Welcome Back
@@ -169,7 +167,7 @@ const Login = () => {
                     </label>
                     <Link
                       to="/forgot-password"
-                      className="text-sm text-blue-600 hover:text-blue-700"
+                      className="text-sm text-blue-900 hover:text-blue-700"
                     >
                       Forgot password?
                     </Link>
@@ -209,7 +207,7 @@ const Login = () => {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className={`w-full py-4 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition flex items-center justify-center gap-3 ${
+                  className={`w-full py-4 bg-blue-900 text-white rounded-xl font-semibold hover:bg-blue-800 transition flex items-center justify-center gap-3 ${
                     isLoading ? "opacity-80 cursor-not-allowed" : ""
                   }`}
                 >
@@ -240,7 +238,7 @@ const Login = () => {
               <div className="space-y-4">
                 <button
                   onClick={handleGuestLogin}
-                  className="w-full py-3 border border-blue-600 text-blue-600 rounded-xl font-medium hover:bg-blue-50 transition flex items-center justify-center gap-3"
+                  className="w-full py-3 border border-blue-600 text-blue-900 rounded-xl font-medium hover:bg-blue-50 transition flex items-center justify-center gap-3"
                 >
                   <QrCode size={20} />
                   Continue as Guest (Scan Only)
@@ -251,7 +249,7 @@ const Login = () => {
                   className="w-full py-3 border border-gray-300 text-gray-700 rounded-xl font-medium hover:bg-gray-50 transition"
                 >
                   Don't have an account?{" "}
-                  <span className="text-blue-600 font-semibold">Sign up</span>
+                  <span className="text-blue-900 font-semibold">Sign up</span>
                 </button>
               </div>
             </div>
